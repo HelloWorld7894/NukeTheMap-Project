@@ -13,7 +13,7 @@ Output_JSON = {
 }
 
 def Load_and_Write(Spec_JSON):
-    ImgInstance = Image.open("./nukeTheWorld/pop-density.jpg")
+    ImgInstance = Image.open("./DensityRender/pop-density.jpg")
     PixelAccessObject = ImgInstance.load()
     Img_RGB = ImgInstance.convert("RGB")
 
@@ -46,7 +46,7 @@ def Load_and_Write(Spec_JSON):
 
 
 #Setting the Access to json (And also rewriting it)
-with open("./nukeTheWorld/PixelAssign.json", "w") as JSON_file:
+with open("./DensityRender/PixelAssign.json", "w") as JSON_file: #Adding soon...
     Load_and_Write(JSON_file)
     #(65, 25, 36) - 210 000 #Max
     #(92, 20, 6) - 82 910 #Max med
