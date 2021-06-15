@@ -51,9 +51,9 @@ def Load_and_Write(Spec_JSON):
             Some kind of correlations (Maybe)
             """
 
-            print(len(Output_JSON["Arr"]))
+            #print(len(Output_JSON["Arr"]))
             #               Currently the last element added
-            if Output_JSON["Arr"][len(Output_JSON["Arr"]) - 1] < Output_JSON["Arr"][len(Output_JSON["Arr"])] / 4: Output_JSON["Arr"][len(Output_JSON["Arr"] - 1)] = Output_JSON["Arr"][len(Output_JSON["Arr"])] / 4 #Doesn´t work
+            #if Output_JSON["Arr"][len(Output_JSON["Arr"]) - 1] < Output_JSON["Arr"][len(Output_JSON["Arr"])] / 4: Output_JSON["Arr"][len(Output_JSON["Arr"] - 1)] = Output_JSON["Arr"][len(Output_JSON["Arr"])] / 4 #Doesn´t work
 
 
 
