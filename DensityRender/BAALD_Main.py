@@ -5,6 +5,7 @@
 
 from PIL import Image
 import json
+import numpy as np
 
 Output_JSON = {
     "Arr" : []
@@ -12,40 +13,41 @@ Output_JSON = {
 
 def Load_and_Write(Spec_JSON):
     ImgInstance = Image.open("./nukeTheMap/pop-density.jpg")
-    PixelAccessObject = ImgInstance.load()
     Img_RGB = ImgInstance.convert("RGB")
+    PixelAccessObject = Img_RGB.load()
 
-    print(ImgInstance.size) #Whole size of image
+    print(Img_RGB.size) #Whole size of image
     print(PixelAccessObject[0, 0]) #Checking first pixel
 
-    for Y in range(500): #Image width 1892
-        for X in range(500): #Image height 1060
+
+    for Y in range(Img_RGB.size[1]): #Image width 1920
+        for X in range(Img_RGB.size[0]): #Image height 1080
             #print(X, Y)
-            PixelRGB_Val = Img_RGB.getpixel((X, Y))
+            R, G, B = PixelAccessObject[X, Y][0], PixelAccessObject[X, Y][1], PixelAccessObject[X, Y][2]
 
             """
             Density Scaling
             """
 
-            if PixelRGB_Val == (198, 205, 224): 
+            if (R, G, B) == (198, 205, 224): 
                 Output_JSON["Arr"].append([X, Y, 0]) #Sea, Ocean, etc.
                 continue
-            elif PixelRGB_Val == (254, 246, 235) or (PixelRGB_Val[0] >= 254 and PixelRGB_Val[1] >= 246 and PixelRGB_Val[2] >= 235): 
+            elif (R, G, B) == (254, 246, 235) or (R >= 254 and R >= 246 and R >= 235): 
                 Output_JSON["Arr"].append([X, Y, 0.03]) #Min density
                 continue
-            elif abs(PixelRGB_Val[0] - PixelRGB_Val[1]) < 20 and abs(PixelRGB_Val[0] - PixelRGB_Val[2]) < 20: 
+            elif abs(R - G) < 20 and abs(R - B) < 20: 
                 Output_JSON["Arr"].append([X, Y, 0.06]) #Min density
                 continue
-            elif 190 < PixelRGB_Val[0] < 210 and 190 < PixelRGB_Val[1] < 210 and 210 < PixelRGB_Val[2] < 230: #Seashores
+            elif 190 < R < 210 and 190 < G < 210 and 210 < B < 230: #Seashores
                 Output_JSON["Arr"].append([X, Y, 0.06])
-            elif 55 < PixelRGB_Val[0] < 75 and 15 < PixelRGB_Val[1] < 35 and 26 < PixelRGB_Val[1] < 46: 
+            elif 55 < R < 75 and 15 < G < 35 and 26 < B < 46: 
                 Output_JSON["Arr"].append([X, Y, 210000]) #Max Density
                 continue
 
             #Range: 254 > 55 (for red) (Range: 179)
 
-            else:                               #Max R    Current R         Pop multiplier #46.31 ###Updated###
-                Output_JSON["Arr"].append([X, Y, (255 - PixelRGB_Val[0]) * 4631.84])
+            else:                               #Max R, Current R, Pop multiplier #46.31 ###Updated###
+                Output_JSON["Arr"].append([X, Y, (255 - R) * 4631.84])
 
             """
             Some kind of correlations (Maybe)
@@ -53,7 +55,7 @@ def Load_and_Write(Spec_JSON):
 
             #print(len(Output_JSON["Arr"]))
             #               Currently the last element added
-            #if Output_JSON["Arr"][len(Output_JSON["Arr"]) - 1] < Output_JSON["Arr"][len(Output_JSON["Arr"])] / 4: Output_JSON["Arr"][len(Output_JSON["Arr"] - 1)] = Output_JSON["Arr"][len(Output_JSON["Arr"])] / 4 #Doesn´t work
+            #if Output_JSON["Arr"][len(Output_JSON["Arr"]) - 2][2] < Output_JSON["Arr"][len(Output_JSON["Arr"]) - 1][2] / 4: Output_JSON["Arr"][len(Output_JSON["Arr"] - 2)][2] = Output_JSON["Arr"][len(Output_JSON["Arr"] - 1)][2] / 4 #Doesn´t work
 
 
 
@@ -70,10 +72,3 @@ with open("./nukeTheMap/PixelAssign.json", "w") as JSON_file:
     #(254, 246, 235) - 0.3 #Min med 
     #(198, 205, 224) - 0 #Min
 
-    """
-    ImgInstance = Image.open("./nukeTheMap/pop-density.jpg")
-    PixelAccessObject = ImgInstance.load()
-    Img_RGB = ImgInstance.convert("RGB")
-
-    print(Img_RGB.getpixel((447, 74)))
-    """
