@@ -16,7 +16,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
 
     //Loading Map Canvas
     var Map_Image = new Image();
-    Map_Image.src = "./pop-density.jpg";
+    Map_Image.src = "./Map.jpg";
     Map_Image.onload = function(){
       Context.drawImage(Map_Image, 0, 0, 1920, 1080)
     }
