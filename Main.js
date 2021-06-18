@@ -111,13 +111,12 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
   }
 
   function ReadJSON(){
-    /*
+    
     for(var i = 0; i < 10; i++){
       $.getJSON(`./JSON_segm/segm_${i}.json`, function(jsonInstance) {
-        JSON_segments.append(jsonInstance);
+        JSON_segments.append(jsonInstance["Arr"]);
       });
     }
-    */
     return promise = new Promise((resolve, reject) => {
           setTimeout(() => resolve("Resolved"), 1000)
     });
