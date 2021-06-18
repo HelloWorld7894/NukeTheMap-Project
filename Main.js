@@ -6,7 +6,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     JSON_segments = []
 
     XYVector = [0, 0];
-    oomBoolSet = false;
+    ZoomBoolSet = false;
     OriginX = 0;
     OriginY = 0;
     Scale = 1;
@@ -132,7 +132,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     if(Result = "Resolved"){
       PageContent.style.visibility = "visible";
       LoadingDiv.remove()
-      alert("Resolved!")
+      console.log("Resolved!")
       
     }
     
