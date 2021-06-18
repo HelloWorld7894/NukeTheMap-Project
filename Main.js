@@ -3,6 +3,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     Canvas = document.querySelector('canvas');
     Context = Canvas.getContext("2d");
     ZoomMultiplier = 0.1;
+    JSON_segments = []
 
     XYVector = [0, 0];
     oomBoolSet = false;
@@ -110,7 +111,29 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
   }
 
   function ReadJSON(){
-    $.getJSON("./Ugabug.json", function(jsonInstance) {
-      console.log(jsonInstance);
+    /*
+    for(var i = 0; i < 10; i++){
+      $.getJSON(`./JSON_segm/segm_${i}.json`, function(jsonInstance) {
+        JSON_segments.append(jsonInstance);
+      });
+    }
+    */
+    return promise = new Promise((resolve, reject) => {
+          setTimeout(() => resolve("Resolved"), 1000)
     });
+  }
+  async function LoadingScreen(){
+    var PageContent = document.getElementById("PageContent");
+    var LoadingDiv = document.getElementById("LoadingDiv");
+    
+    PageContent.style.visibility = "hidden";
+  
+    let Result = await ReadJSON();
+    if(Result = "Resolved"){
+      PageContent.style.visibility = "visible";
+      LoadingDiv.remove()
+      alert("Resolved!")
+      
+    }
+    
   }
