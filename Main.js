@@ -132,6 +132,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
       PageContent.style.visibility = "visible";
       LoadingDiv.remove()
       console.log("Resolved!")
+      console.log(JSON_segments)
       
     }
     
