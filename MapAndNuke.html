@@ -5,6 +5,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
     <script type="text/javascript" src="./Main.js"></script>
     <style>
+      body{
+        background-color: black
+      }
+      p{color: white}
+      h1{color: white}
       ul {
         list-style-type: none;
         margin: 0;
@@ -14,27 +19,46 @@
       li {
         display: inline;
       }
+      
+      .loader {
+        border: 32px solid LimeGreen;
+        border-radius: 50%;
+        border-top: 32px solid black;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
     </style>
   </head>
-  <body onload="LoadMap(), CanvasListenerSetUp()">
-    <h1>NukeTheMap Project</h1>
-    <p>This project is about finding out how dangerous are Nuclear bombs</p>
+  <body onload="LoadMap(), CanvasListenerSetUp(), LoadingScreen()">
+    <div id="LoadingDiv">
+      <div class="loader"></div>
+      <p>Loading, Please wait...</p>
+    </div>
     
-    
-    <form>
-      Select your favorite Nuclear Bomb:
-      <select id="Bomb_Selection">
-        <option value="Tzar Bomba (100Mt)">Tzar Bomba (100Mt)</option>
-        <option value="Castle Bravo">Castle Bravo</option>
-        <option value="Tzar Bomba (50Mt)">Tzar Bomba (50Mt)</option>
-        <option value="Project 596">Project 596</option>
-      </select>
-    </form>
-    <ul>
-      <li><button type="button" onclick="Detonate()">Detonate</button></li>
-      <li><button type="button" onclick="ZoomBool()">Zoom Off</button></li>
-    </ul>
+    <div id="PageContent">
+      <h1>NukeTheMap Project</h1>
+      <p>This project is about finding out how dangerous are Nuclear bombs</p>
+      <form style="color: white">
+        Select your favorite Nuclear Bomb:
+        <select id="Bomb_Selection">
+          <option value="Tzar Bomba (100Mt)">Tzar Bomba (100Mt)</option>
+          <option value="Castle Bravo">Castle Bravo</option>
+          <option value="Tzar Bomba (50Mt)">Tzar Bomba (50Mt)</option>
+          <option value="Project 596">Project 596</option>
+        </select>
+      </form>
+      <ul>
+        <li><button type="button" onclick="Detonate()">Detonate</button></li>
+        <li><button type="button" onclick="ZoomBool()">Zoom Off</button></li>
+      </ul>
 
-    <canvas id="Map" width="1920" height="1080" style="border: 1px solid black">
+      <canvas id="Map" width="1920" height="1080" style="border: 1px solid black">
+    </div>
   </body>
 </html>
