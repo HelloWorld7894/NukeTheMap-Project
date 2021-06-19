@@ -88,6 +88,11 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         Context.stroke();
         Context.closePath();
         
+        JSON_segments.forEach(Segment => {
+          Segment.forEach(Pixel => {
+            console.log(Pixel)
+          })
+        });
         
         //Context.clearRect(20, 20, Canvas.width, Canvas.height)
         
