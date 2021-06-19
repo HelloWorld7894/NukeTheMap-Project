@@ -91,7 +91,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         JSON_segments.forEach(Segment => {
           Segment.forEach(Pixel => {
             //console.log(Pixel)
-            if(Pixel[0] == XYVector[0] - Math.round(NukeDict[Selected_Bomb][2] * 0.027) && Pixel[1] == XYVector[1] - Math.round(NukeDict[Selected_Bomb][2] * 0.027)){
+            if(Pixel[0] == XYVector[0] && Pixel[1] == XYVector[1]){
               console.log("Found!", Pixel);
             }
           })
