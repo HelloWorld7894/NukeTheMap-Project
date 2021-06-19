@@ -92,7 +92,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
           Segment.forEach(Pixel => {
             //console.log(Pixel)
             if(Pixel[0] == XYVector[0] && Pixel[1] == XYVector[1]){
-              console.log("Found!", Pixel);
+              alert(Pixel)
             }
           })
         });
