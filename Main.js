@@ -90,7 +90,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         
         JSON_segments.forEach(Segment => {
           Segment.forEach(Pixel => {
-            console.log(Pixel)
+            //console.log(Pixel)
           })
         });
         
