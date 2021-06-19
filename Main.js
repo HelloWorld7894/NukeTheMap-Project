@@ -91,10 +91,12 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         
         JSON_segments.forEach(Segment => {
           Segment.forEach(Pixel => {
-            //console.log(Pixel)
+            console.log(Pixel[0])
+            /*
             if(Pixel[0] == XYVector[0] && Pixel[1] == XYVector[1]){
               Result.push(Pixel)
             }
+            */
           })
         });
       
