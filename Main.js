@@ -114,7 +114,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     
     for(var i = 0; i < 10; i++){
       $.getJSON(`https://raw.githubusercontent.com/HelloWorld7894/NukeTheMap-Project/main/DensityRender/JSON_segm/Segm_${i}.json`, function(jsonInstance) {
-        JSON_segments.append(jsonInstance["Arr"]);
+        JSON_segments.push(jsonInstance["Arr"]);
       });
     }
     return promise = new Promise((resolve, reject) => {
