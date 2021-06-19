@@ -92,7 +92,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
             for(var i2 = 0; i2 < JSON_segments[i].length; i2++){
                 console.log(XYVector);
                 
-                if(JSON_segments[i][i2][0] == XYVector[0] && Pixel[1] == JSON_segments[i][i2][1]){
+                if(JSON_segments[i][i2][0] == round(XYVector[0]) && JSON_segments[i][i2][1] == round(XYVector[1])){
                     console.log(JSON_segments[i][i2]);
                 }
             }
@@ -102,7 +102,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         //Context.clearRect(20, 20, Canvas.width, Canvas.height)
         
         
-        if(XYVector[0] === 0 || XYVector[1] === 0){
+        if(XYVector[0] == 0 || XYVector[1] == 0){
           alert("You haven´t selected the location of detonate yet!")
           return 0;
           //1370 550
