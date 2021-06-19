@@ -4,6 +4,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     Context = Canvas.getContext("2d");
     ZoomMultiplier = 0.1;
     JSON_segments = []
+    Result = []
 
     XYVector = [0, 0];
     ZoomBoolSet = false;
@@ -92,10 +93,12 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
           Segment.forEach(Pixel => {
             //console.log(Pixel)
             if(Pixel[0] == XYVector[0] && Pixel[1] == XYVector[1]){
-              alert(Pixel)
+              Result.push(Pixel)
             }
           })
         });
+      
+        alert(Pixel)
         
         //Context.clearRect(20, 20, Canvas.width, Canvas.height)
         
