@@ -102,9 +102,12 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
                   var Neighboring_Segments = [(i <= 5) ? 1 : 0, (i != 5 || i != 10) ? 1 : 0, (i != 1 || i != 6) ? 1 : 0, (i <= 6) ? 1 : 0
                   //                           DIAGONAL LEFT BOTTOM         DIAGONAL RIGHT BOTTOM      DIAGONAL RIGHT TOP            DIAGONAL LEFT TOP           
                                               (i <= 2 && i >= 5) ? 1 : 0, (i <= 4 && i >= 1) ? 1 : 0, (i >= 6 && i <= 10) ? 1 : 0, (i >= 7 && i <= 10) ? 1 : 0]
-
+                  
+                  console.log(Neighboring_Segments)
                   
                   for(var Neighbor_Iter = 0; Neighbor_Iter < Neighboring_Segments.length; Neighbor_Iter++){
+                    console.log(Neighboring_Segments[Neighbor_Iter])
+
                     if(Neighboring_Segments[Neighbor_Iter] == 1){
                       switch(Neighbor_Iter){
                         case 0: //BOTTOM SEGMENT
