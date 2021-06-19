@@ -88,9 +88,9 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         Context.stroke();
         Context.closePath();
         
+        console.log(XYVector);
         for(var i = 0; i < JSON_segments.length; i++){
             for(var i2 = 0; i2 < JSON_segments[i].length; i2++){
-                console.log(XYVector);
                 
                 if(JSON_segments[i][i2][0] == round(XYVector[0]) && JSON_segments[i][i2][1] == round(XYVector[1])){
                     console.log(JSON_segments[i][i2]);
