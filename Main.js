@@ -88,15 +88,16 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         Context.stroke();
         Context.closePath();
         
-        JSON_segments.forEach(Segment => {
-          Segment.forEach(Pixel => {
-            console.log(XYVector);
-              
-            if(Pixel[0] == XYVector[0] && Pixel[1] == XYVector[1]){
-              console.log(Pixel)
+        for(var i = 0; i < JSON_segments.length; i++){
+            for(var i2 = 0; i2 < JSON_segments[i].length; i2++){
+                console.log(XYVector);
+                
+                if(JSON_segments[i][i2][0] == XYVector[0] && Pixel[1] == JSON_segments[i][i2][1]){
+                    console.log(JSON_segments[i][i2]);
+                }
             }
-          })
-        });
+            
+        }
         
         //Context.clearRect(20, 20, Canvas.width, Canvas.height)
         
