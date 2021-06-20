@@ -90,19 +90,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         Context.closePath();
         
         console.log(XYVector);
-        for(var i = 0; i < JSON_segments.length; i++){
-            for(var i2 = 0; i2 < JSON_segments[i].length; i2++){
-                
-                if(JSON_segments[i][i2][0] == Math.round(XYVector[0]) && JSON_segments[i][i2][1] == Math.round(XYVector[1])){
-                    console.log(JSON_segments[i][i2]);
-                    Result = JSON_segments[i][i2];
-                }
-            }
-            
-        }
-        
-        //Context.clearRect(20, 20, Canvas.width, Canvas.height)
-        
+       
         
         if(XYVector[0] == 0 || XYVector[1] == 0){
           alert("You haven´t selected the location of detonate yet!")
