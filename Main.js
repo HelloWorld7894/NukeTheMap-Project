@@ -74,7 +74,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
 
   }
   
-  function Detonate(){
+function Detonate(){
       var Selected_Bomb = document.getElementById("Bomb_Selection").value;
       
       
@@ -89,106 +89,44 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
       Context.closePath();
       
       console.log(XYVector);
-      for(var i = 0; i < JSON_segments.length; i++){
-          for(var i2 = 0; i2 < JSON_segments[i].length; i2++){
-              
-              if(JSON_segments[i][i2][0] == Math.round(XYVector[0]) && JSON_segments[i][i2][1] == Math.round(XYVector[1])){
-                  console.log(JSON_segments[i][i2]);
-                  var Result = JSON_segments[i][i2];
-                  var StartingPixel;
-                  var EndingPixel;
 
-                  //                           BOTTOM SEGMENT          RIGHT SEGMENT                LEFT SEGMENT                TOP SEGMENT
-                  var Neighboring_Segments = [(i <= 5) ? 1 : 0, (i != 5 || i != 10) ? 1 : 0, (i != 1 || i != 6) ? 1 : 0, (i <= 6) ? 1 : 0,
-                  //                           DIAGONAL LEFT BOTTOM         DIAGONAL RIGHT BOTTOM      DIAGONAL RIGHT TOP            DIAGONAL LEFT TOP           
-                                              (i <= 2 && i >= 5) ? 1 : 0, (i <= 4 && i >= 1) ? 1 : 0, (i >= 6 && i <= 10) ? 1 : 0, (i >= 7 && i <= 10) ? 1 : 0]
-                  
-                  console.log(Neighboring_Segments)
-                  
-                  for(var Neighbor_Iter = 0; Neighbor_Iter < Neighboring_Segments.length; Neighbor_Iter++){
-                    console.log(Neighboring_Segments[Neighbor_Iter])
+      /*
+      Put Code from StartingEndingPoint.js if you are retarded
+      */
 
-                    if(Neighboring_Segments[Neighbor_Iter] == 1){
-                      switch(Neighbor_Iter){
-                        case 0: //BOTTOM SEGMENT
-                          // Y Value of center pixel | radius of the specified nuclear bomb | segment | the segment width
-                          if(JSON_segments[i][i2][1] + Math.round(NukeDict[Selected_Bomb][2]) > (i = 0) ? 0 : i * 540){ //if statement if the radius + Center pixel pos is bigger than the segment
+      /*
+      CALCULATING CAUSALTIES BY GETTING ALL PIXELS IN THE BOMB RADIUS
+      */
 
-                            /*
-                            StartingPixel = JSON_segments[i][i2 - Math.round(NukeDict[Selected_Bomb][2] * 0.027)];
-                            EndingPixel = JSON_segments[i + 1][i2 + JSON_segments[i][i2][0] + Math.round(NukeDict[Selected_Bomb][2]) - 384]; //Getting
-                            */
-                            console.log("Bottom")
-                          }
-                          
-                        case 1: //RIGHT SEGMENT
-                          // X Value of center pixel | radius of the specified nuclear bomb | segment | the segment width
-                          if(JSON_segments[i][i2][0] + Math.round(NukeDict[Selected_Bomb][2]) > (i = 0) ? 0 : i * 384){
+      var Image = Context.getImageData(0, 0, Canvas.width, Canvas.height)
+      var Image_Data = Image.data; //enumerates all pixels in the context
 
-                            console.log("Right")
-                          }
-                          
-                        case 2: //LEFT SEGMENT
-                          // X Value of center pixel | radius of the specified nuclear bomb | segment | the segment width
-                          if(JSON_segments[i][i2][0] - Math.round(NukeDict[Selected_Bomb][2]) < 0){
-
-                            console.log("Left")
-                          }
-                          
-  
-                        case 3: //TOP SEGMENT
-                          // Y Value of center pixel | radius of the specified nuclear bomb | segment | the segment width
-                          if(JSON_segments[i][i2][1] - Math.round(NukeDict[Selected_Bomb][2]) < 0){
-
-                            console.log("Top")
-                          }
-                        
-                        /*
-                        DIAGONAL NEIGHBORS
-                        */
-                        
-                        case 4: //DIAGONAL LEFT BOTTOM
-                          // Current X                  Radius                                    Current Y                 Radius
-                          if(JSON_segments[i][i2][0] < Math.round(NukeDict[Selected_Bomb][2]) && JSON_segments[i][i2][1] < Math.round(NukeDict[Selected_Bomb][2])){
-
-                            console.log("Left Bottom")
-                          }
-  
-                        case 5: //DIAGONAL RIGHT BOTTOM
-                          // Current X                  Radius                                    Current Y                 Radius
-                          if(JSON_segments[i][i2][0] > 384 - Math.round(NukeDict[Selected_Bomb][2]) && JSON_segments[i][i2][1] < Math.round(NukeDict[Selected_Bomb][2])){
-                            
-                            console.log("Right Bottom")
-                          }
-  
-                        case 6: //DIAGONAL RIGHT TOP
-                          // Current X                  Radius                                    Current Y                 Radius
-                          if(JSON_segments[i][i2][0] > 384 - Math.round(NukeDict[Selected_Bomb][2]) && JSON_segments[i][i2][1] > 540 - Math.round(NukeDict[Selected_Bomb][2])){
-                            
-                            console.log("Right Top")
-                          }
-
-  
-                        case 7: // DIAGONAL LEFT TOP 
-                          // Current X                  Radius                                    Current Y                 Radius
-                          if(JSON_segments[i][i2][0] < Math.round(NukeDict[Selected_Bomb][2]) && JSON_segments[i][i2][1] > 540 - Math.round(NukeDict[Selected_Bomb][2])){
-                           
-                            console.log("Left Top")
-                          }
-
-                      }
-                      break
-                    }
-                  }
-
-                  if(JSON_segments[i][i2])
-
-                  var StartingPixel = JSON_segments[i][i2 - Math.round(NukeDict[Selected_Bomb][2] * 0.027)];
-                  var EndingPixel = JSON_segments[i][i2 + Math.round(NukeDict[Selected_Bomb][2] * 0.027)];
-              }
-          }
-          
+      for(var i = 0; i < Image_Data.length; i += 4){
+        // Red                      Green                       Blue
+        if(Image_Data[i] == 255 && Image_Data[i + 1] == 140 && Image_Data[i + 2] == 0){Hidden_Operation.push(i / 4)}
       }
+
+      for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){ //Each segment iterator
+        for(var Iter_In_Segment = 0; Iter_In_Segment < JSON_segments[Segment_Iter]; Iter_In_Segment++){ //Iterator in segment
+          if(JSON_segments.indexOf(JSON_segments[Segment_Iter][Iter_In_Segment]) + (Segment_Iter - 1)  * 1036804 == Hidden_Operation[0]){
+            Result_Array.push(JSON_segments[Segment_Iter][Iter_In_Segment])
+          }
+        }
+      }
+      
+      
+      if(XYVector[0] === 0 || XYVector[1] === 0){
+        alert("You haven´t selected the location of detonate yet!")
+        return 0;
+        //1370 550
+        //20 005
+        
+        //0.068
+        //0.027
+      }
+      
+      
+}
       
       //Context.clearRect(20, 20, Canvas.width, Canvas.height)
       
