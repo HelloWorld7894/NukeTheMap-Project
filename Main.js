@@ -177,6 +177,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
                           }
 
                       }
+                      break
                     }
                   }
 
