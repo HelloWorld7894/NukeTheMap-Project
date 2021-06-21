@@ -74,6 +74,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
 
   }
   
+
 function Detonate(){
       var Selected_Bomb = document.getElementById("Bomb_Selection").value;
       
@@ -108,9 +109,12 @@ function Detonate(){
 
       for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){ //Each segment iterator
         for(var Iter_In_Segment = 0; Iter_In_Segment < JSON_segments[Segment_Iter]; Iter_In_Segment++){ //Iterator in segment
-          if(JSON_segments.indexOf(JSON_segments[Segment_Iter][Iter_In_Segment]) + (Segment_Iter - 1)  * 1036804 == Hidden_Operation[0]){
-            Result_Array.push(JSON_segments[Segment_Iter][Iter_In_Segment])
-          }
+
+          Hidden_Operation.forEach(Element => {
+            if(JSON_segments.indexOf(JSON_segments[Segment_Iter][Iter_In_Segment]) == Element){
+              Result_Array.push(JSON_segments[Segment_Iter][Iter_In_Segment])
+            }
+          });
         }
       }
       
@@ -127,23 +131,6 @@ function Detonate(){
       
       
 }
-      
-      //Context.clearRect(20, 20, Canvas.width, Canvas.height)
-      
-      
-      if(XYVector[0] === 0 || XYVector[1] === 0){
-        alert("You haven´t selected the location of detonate yet!")
-        return 0;
-        //1370 550
-        //20 005
-        
-        //0.068
-        //0.027
-      }
-      
-      
-}
-
 
   function ZoomBool(){
     if(ZoomBoolSet == false){ZoomBoolSet = true}
