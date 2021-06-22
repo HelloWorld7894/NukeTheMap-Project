@@ -126,6 +126,8 @@ function Detonate(){
       Result_Array.forEach(Pop => {
         Pop_Sum += Pop;
       });
+    
+      console.log(Pop_Sum)
       
       
       
