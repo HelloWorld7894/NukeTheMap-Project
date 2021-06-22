@@ -127,7 +127,7 @@ function Detonate(){
       });
     
       console.log(Pop_Sum)
-      
+      Hidden_Operation = [] //Converts Array back to empty
       
       
       if(XYVector[0] === 0 || XYVector[1] === 0){
