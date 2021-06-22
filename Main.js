@@ -106,7 +106,7 @@ function Detonate(){
 
       for(var i = 0; i < Image_Data.length; i += 4){
         // Red                      Green                       Blue
-        if(Image_Data[i] == 255 && Image_Data[i + 1] == 140 && Image_Data[i + 2] == 0){Hidden_Operation.push(i / 4)}
+        if(Image_Data[i] == 255 && Image_Data[i + 1] == 165 && Image_Data[i + 2] == 0){Hidden_Operation.push(i / 4)}
       }
 
       for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){ //Each segment iterator
