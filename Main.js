@@ -4,6 +4,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     Context = Canvas.getContext("2d");
     ZoomMultiplier = 0.1;
     JSON_segments = []
+    Result_Array = []
 
     XYVector = [0, 0];
     ZoomBoolSet = false;
