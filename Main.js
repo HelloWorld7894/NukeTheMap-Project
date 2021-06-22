@@ -119,6 +119,7 @@ function Detonate(){
         }
       }
       console.log(Result_Array)
+      console.log(Hidden_Operation)
       
       if(XYVector[0] === 0 || XYVector[1] === 0){
         alert("You haven´t selected the location of detonate yet!")
