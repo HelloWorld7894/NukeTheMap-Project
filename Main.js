@@ -111,9 +111,9 @@ function Detonate(){
 
       for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){ //Each segment iterator
         Hidden_Operation.forEach(Element => {
-          for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){
-            if(JSON_segments[Segment_Iter].indexOf(JSON_segments[Segment_Iter][Iter_In_Segment]) == Element){
-              Result_Array.push(JSON_segments[Segment_Iter][Iter_In_Segment])
+          for(var In_Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){
+            if(JSON_segments[Segment_Iter].indexOf(JSON_segments[Segment_Iter][In_Iter_Segment]) == Element){
+              Result_Array.push(JSON_segments[Segment_Iter][In_IterSegment])
             }
           }
         });
