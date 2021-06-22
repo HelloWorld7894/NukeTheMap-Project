@@ -110,16 +110,13 @@ function Detonate(){
       }
 
       for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){ //Each segment iterator
-        for(var Iter_In_Segment = 0; Iter_In_Segment < JSON_segments[Segment_Iter]; Iter_In_Segment++){ //Iterator in segment
-
-          Hidden_Operation.forEach(Element => {
-            for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){
-                if(JSON_segments[Segment_Iter].indexOf(JSON_segments[Segment_Iter][Iter_In_Segment]) == Element){
-                    Result_Array.push(JSON_segments[Segment_Iter][Iter_In_Segment])
-                }
+        Hidden_Operation.forEach(Element => {
+          for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){
+            if(JSON_segments[Segment_Iter].indexOf(JSON_segments[Segment_Iter][Iter_In_Segment]) == Element){
+              Result_Array.push(JSON_segments[Segment_Iter][Iter_In_Segment])
             }
-          });
-        }
+          }
+        });
       }
       console.log(Result_Array)
       console.log(Hidden_Operation)
