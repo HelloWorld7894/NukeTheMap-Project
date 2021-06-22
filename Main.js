@@ -5,6 +5,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     ZoomMultiplier = 0.1;
     JSON_segments = []
     Result_Array = []
+    Hidden_Operation = []
 
     XYVector = [0, 0];
     ZoomBoolSet = false;
