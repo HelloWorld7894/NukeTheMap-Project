@@ -172,7 +172,6 @@ function Detonate(){
   }
 
   function ReadJSON(){
-    
     for(var i = 0; i < 10; i++){
       $.getJSON(`https://raw.githubusercontent.com/HelloWorld7894/NukeTheMap-Project/main/DensityRender/JSON_segm/Segm_${i}.json`, function(jsonInstance) {
         JSON_segments.push(jsonInstance["Arr"]);
