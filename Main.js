@@ -109,17 +109,11 @@ function Detonate(){
         if(Image_Data[i] == 255 && Image_Data[i + 1] == 165 && Image_Data[i + 2] == 0){Hidden_Operation.push(i / 4)}
       }
 
-      for(var Segment_Iter = 0; Segment_Iter < JSON_segments.length; Segment_Iter++){ //Each segment iterator
-        for(var In_Segment_Iter = 0; In_Segment_Iter < JSON_segments[Segment_Iter].length; In_Segment_Iter++){
-          Hidden_Operation.forEach(Element => {
-            if(JSON_segments[Segment_Iter].indexOf(JSON_segments[Segment_Iter][In_Segment_Iter]) + Segment_Iter * 207360 == Element){
-              Result_Array.push(JSON_segments[Segment_Iter][In_Segment_Iter])
-            }  
-          });
-            
-        }
-        
-      }
+      Hidden_Operation.forEach(Element => {
+        var Operator = (Element - (Element % 207360)) / 207360
+        Result_Array.push(JSON_segments[Operator][Element][2])
+      })
+
       console.log(Result_Array)
       console.log(Hidden_Operation)
       var Pop_Sum;
