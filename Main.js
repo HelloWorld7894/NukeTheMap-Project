@@ -5,6 +5,7 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     ZoomMultiplier = 0.1;
     JSON_segments = []
     Result_Array = []
+    Hidden_Operation = []
 
     XYVector = [0, 0];
     ZoomBoolSet = false;
@@ -74,7 +75,62 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     }, 100)
 
   }
-  
+
+function Detonate(){
+      var Selected_Bomb = document.getElementById("Bomb_Selection").value;
+      
+      
+      
+      alert("You have selected: " + Selected_Bomb);
+      
+      Context.beginPath();
+      Context.arc(XYVector[0], XYVector[1], NukeDict[Selected_Bomb][2] * 0.027, 0, 2* Math.PI);
+      Context.fillStyle = "orange";
+      Context.fill();
+      Context.stroke();
+      Context.closePath();
+      
+      console.log(XYVector);
+
+      /*
+      Put Code from StartingEndingPoint.js if you are retarded
+      */
+
+      /*
+      CALCULATING CAUSALTIES BY GETTING ALL PIXELS IN THE BOMB RADIUS
+      */
+
+      var Image = Context.getImageData(0, 0, Canvas.width, Canvas.height)
+      var Image_Data = Image.data; //enumerates all pixels in the context
+
+      for(var i = 0; i < Image_Data.length; i += 4){
+        // Red                      Green                       Blue
+        if(Image_Data[i] == 255 && Image_Data[i + 1] == 165 && Image_Data[i + 2] == 0){Hidden_Operation.push(i / 4)}
+      }
+
+      Hidden_Operation.forEach(Element => {
+        var Operator = (Element - (Element % 207360)) / 207360
+        Result_Array.push(JSON_segments[Operator][Element % 207360][2])
+      })
+
+      console.log(Result_Array)
+      console.log(Hidden_Operation)
+      var Pop_Sum = 0;
+    
+      Result_Array.forEach(Pop => {
+        Pop_Sum += Pop;
+      });
+    
+      console.log(Pop_Sum)
+      Hidden_Operation = [] //Converts Array back to empty
+      
+      
+      if(XYVector[0] === 0 || XYVector[1] === 0){
+        alert("You haven´t selected the location of detonate yet!")
+        return 0;
+        //1370 550
+        //20 005
+        
   function Detonate(){
         var Selected_Bomb = document.getElementById("Bomb_Selection").value;
         
@@ -103,7 +159,12 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
         }
         
         
-  }
+        //0.068
+        //0.027
+      }
+      
+      
+}
 
   function ZoomBool(){
     if(ZoomBoolSet == false){ZoomBoolSet = true}
