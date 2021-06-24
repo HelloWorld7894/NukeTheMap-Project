@@ -111,7 +111,7 @@ function Detonate(){
 
       Hidden_Operation.forEach(Element => {
         var Operator = (Element - (Element % 207360)) / 207360
-        Result_Array.push(JSON_segments[Operator][Element][2])
+        Result_Array.push(JSON_segments[Operator][Element % 207360][2])
       })
 
       console.log(Result_Array)
