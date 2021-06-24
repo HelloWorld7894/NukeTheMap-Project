@@ -116,7 +116,7 @@ function Detonate(){
 
       console.log(Result_Array)
       console.log(Hidden_Operation)
-      var Pop_Sum;
+      var Pop_Sum = 0;
     
       Result_Array.forEach(Pop => {
         Pop_Sum += Pop;
