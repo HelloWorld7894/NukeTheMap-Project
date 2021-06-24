@@ -20,8 +20,8 @@ def Load_and_Write(Spec_JSON):
     print(PixelAccessObject[0, 0]) #Checking first pixel
 
 
-    for Y in range(Img_RGB.size[1]): #Image width 1920
-        for X in range(Img_RGB.size[0]): #Image height 1080
+    for Y in range(Img_RGB.size[1]): #Image height 1920
+        for X in range(Img_RGB.size[0]): #Image width 1080
             #print(X, Y)
             R, G, B = PixelAccessObject[X, Y][0], PixelAccessObject[X, Y][1], PixelAccessObject[X, Y][2]
 

@@ -75,7 +75,6 @@ function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap fun
     }, 100)
 
   }
-  
 
 function Detonate(){
       var Selected_Bomb = document.getElementById("Bomb_Selection").value;
@@ -132,6 +131,34 @@ function Detonate(){
         //1370 550
         //20 005
         
+  function Detonate(){
+        var Selected_Bomb = document.getElementById("Bomb_Selection").value;
+        
+        
+        
+        alert("You have selected: " + Selected_Bomb);
+        
+        Context.beginPath();
+        Context.arc(XYVector[0], XYVector[1], NukeDict[Selected_Bomb][2] * 0.027, 0, 2* Math.PI);
+        Context.fillStyle = "orange";
+        Context.fill();
+        Context.stroke();
+        Context.closePath();
+        
+        console.log(XYVector);
+       
+        
+        if(XYVector[0] == 0 || XYVector[1] == 0){
+          alert("You haven´t selected the location of detonate yet!")
+          return 0;
+          //1370 550
+          //20 005
+          
+          //0.068
+          //0.027
+        }
+        
+        
         //0.068
         //0.027
       }
@@ -147,7 +174,7 @@ function Detonate(){
   function ReadJSON(){
     
     for(var i = 0; i < 10; i++){
-      $.getJSON(`https://raw.githubusercontent.com/HelloWorld7894/NukeTheMap-Project/testing/DensityRender/JSON_segm/Segm_${i}.json`, function(jsonInstance) {
+      $.getJSON(`https://raw.githubusercontent.com/HelloWorld7894/NukeTheMap-Project/main/DensityRender/JSON_segm/Segm_${i}.json`, function(jsonInstance) {
         JSON_segments.push(jsonInstance["Arr"]);
       });
     }
