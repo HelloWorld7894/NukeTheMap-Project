@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
      LoadMap()
      CanvasListenerSetUp()
-     LoadingScreen()"
+     LoadingScreen()
 }, false);
 
 //Loading the whole map to canvas
