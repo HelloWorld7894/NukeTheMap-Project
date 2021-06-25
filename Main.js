@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function(){
+  LoadMap()
+  CanvasListenerSetUp()
+  LoadingScreen()
+});
+
 //Loading the whole map to canvas
 function LoadMap(){ //I needed to put this fuckin piece of pain into LoadMap function because nobody updated Vanilla JS into a version where it is loading after the HTML is loaded 
   Canvas = document.querySelector('canvas');
