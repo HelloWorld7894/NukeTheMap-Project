@@ -130,7 +130,13 @@ function Detonate(){
   
     console.log(Pop_Sum)
     Hidden_Operation = [] //Converts Array back to empty
+  
+    var DeathCount = document.getElementById("DeathCount")
     
+    for(var Incrementator = 0; Incrementator <= Pop_Sum; Incrementator++){
+      setTimeout(() => DeathCount.innerText = Incrementator, 500)
+    }
+  
     
     if(XYVector[0] === 0 || XYVector[1] === 0){
       alert("You haven´t selected the location of detonate yet!")
