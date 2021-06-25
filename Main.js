@@ -134,7 +134,7 @@ function Detonate(){
     var DeathCount = document.getElementById("DeathCount")
     
     for(var Incrementator = 0; Incrementator <= Pop_Sum; Incrementator++){
-      setTimeout(() => DeathCount.innerText = Incrementator, 500)
+      setTimeout(() => DeathCount.innerText = "Casualties " + Incrementator, 500)
     }
   
     
