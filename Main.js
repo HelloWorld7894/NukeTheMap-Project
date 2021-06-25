@@ -136,48 +136,16 @@ function Detonate(){
         return 0;
         //1370 550
         //20 005
-        
-  function Detonate(){
-        var Selected_Bomb = document.getElementById("Bomb_Selection").value;
-        
-        
-        
-        alert("You have selected: " + Selected_Bomb);
-        
-        Context.beginPath();
-        Context.arc(XYVector[0], XYVector[1], NukeDict[Selected_Bomb][2] * 0.027, 0, 2* Math.PI);
-        Context.fillStyle = "orange";
-        Context.fill();
-        Context.stroke();
-        Context.closePath();
-        
-        console.log(XYVector);
-       
-        
-        if(XYVector[0] == 0 || XYVector[1] == 0){
-          alert("You haven´t selected the location of detonate yet!")
-          return 0;
-          //1370 550
-          //20 005
-          
-          //0.068
-          //0.027
-        }
-        
-        
-        //0.068
-        //0.027
-      }
       
       
 }
 
-  function ZoomBool(){
+function ZoomBool(){
     if(ZoomBoolSet == false){ZoomBoolSet = true}
     else{ZoomBoolSet = false}
-  }
+}
 
-  function ReadJSON(){
+function ReadJSON(){
     for(var i = 0; i < 10; i++){
       $.getJSON(`./DensityRender/JSON_segm/Segm_${i}.json`, function(jsonInstance) {
         JSON_segments.push(jsonInstance["Arr"]);
@@ -186,8 +154,8 @@ function Detonate(){
     return promise = new Promise((resolve, reject) => {
           setTimeout(() => resolve("Resolved"), 1000)
     });
-  }
-  async function LoadingScreen(){
+}
+async function LoadingScreen(){
     var PageContent = document.getElementById("PageContent");
     var LoadingDiv = document.getElementById("LoadingDiv");
     
@@ -202,4 +170,4 @@ function Detonate(){
       
     }
     
-  }
+}
