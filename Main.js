@@ -133,9 +133,12 @@ function Detonate(){
   
     var DeathCount = document.getElementById("DeathCount")
     
+    /* Doesn´t work properly
     for(var Incrementator = 0; Incrementator <= Pop_Sum; Incrementator++){
       setTimeout(() => DeathCount.innerText = "Casualties " + Incrementator, 500)
     }
+    */
+    DeathCount.innerText = "Casualties " + Incrementator
   
     
     if(XYVector[0] === 0 || XYVector[1] === 0){
