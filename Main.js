@@ -138,7 +138,8 @@ function Detonate(){
       setTimeout(() => DeathCount.innerText = "Casualties " + Incrementator, 500)
     }
     */
-    DeathCount.innerText = "Casualties " + Pop_Sum
+    
+    DeathCount.innerText = "Casualties: " + Pop_Sum
   
     
     if(XYVector[0] === 0 || XYVector[1] === 0){
